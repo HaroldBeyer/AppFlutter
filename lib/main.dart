@@ -1,37 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:todo/pages/login_page.dart';
 
-void main() => runApp(App());
+void main() => runApp(MyApp());
 
-class App extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Aplicativo TODO',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: PaginaInicial(),
-    );
-  }
-}
-
-class PaginaInicial extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Text("Olá amigão"),
-        title: Text("Todo List"),
-        actions: <Widget>[
-          Icon(Icons.book),
-        ],
-      ),
-      body: Container(
-        child: Center(
-          child: Text("Olá mundo"),
-        ),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: Colors.grey),
+        home: LoginPage());
   }
 }
