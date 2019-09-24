@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+  final _tLogin = TextEditingController();
+  final _tPass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,21 +20,29 @@ class LoginPage extends StatelessWidget {
         padding: EdgeInsets.all(12),
         child: ListView(
           children: <Widget>[
-            _text("Login", "Digite o seu email"),
+            _text("Login", "Digite o seu email", controller: _tLogin),
             SizedBox(
               height: 20,
             ),
-            _text("Senha", "Digite a sua senha", password: true),
+            _text("Senha", "Digite a sua senha",
+                password: true, controller: _tPass),
             SizedBox(
               height: 20,
             ),
-            _button("Login"),
+            _button("Login", _onClickLogin)
           ],
           //  color: Colors.white,
         ));
   }
 
-  _button(String text) {
+  void _onClickLogin() {
+    String login = _tLogin.text;
+    String pass = _tPass.text;
+
+    print("Login: $login, Senha: $pass");
+  }
+
+  _button(String text, Function onPressed) {
     return Container(
         height: 46,
         child: RaisedButton(
@@ -40,11 +51,13 @@ class LoginPage extends StatelessWidget {
               text,
               style: TextStyle(color: Colors.white, fontSize: 22),
             ),
-            onPressed: () {}));
+            onPressed: onPressed));
   }
 
-  _text(String label, String hint, {bool password = false}) {
+  _text(String label, String hint,
+      {bool password = false, @required TextEditingController controller}) {
     return TextFormField(
+      controller: controller,
       obscureText: password,
       style: TextStyle(color: Colors.black),
       decoration: InputDecoration(
