@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/pages/home_page.dart';
 import 'package:todo/widgets/app_button.dart';
 import 'package:todo/widgets/app_text.dart';
 
@@ -75,6 +76,9 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
     print("Login: $login, Senha: $pass");
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return HomePage();
+    }));
   }
 
   @override
